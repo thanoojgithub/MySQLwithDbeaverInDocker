@@ -1,0 +1,74 @@
+docker run hello-world
+output:
+Hello from Docker!
+
+
+docker pull mysql
+docker run -e MYSQL_ROOT_PASSWORD=pass -d MySQL
+
+
+docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                 NAMES
+0a20b4b71820   mysql     "docker-entrypoint.s…"   23 seconds ago   Up 22 seconds   3306/tcp, 33060/tcp   thirsty_raman
+
+
+
+docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                 NAMES
+b662acb7d8aa   mysql     "docker-entrypoint.s…"   41 seconds ago   Up 40 seconds   3306/tcp, 33060/tcp   heuristic_golick
+0a20b4b71820   mysql     "docker-entrypoint.s…"   2 minutes ago    Up 2 minutes    3306/tcp, 33060/tcp   thirsty_raman
+
+
+take oldest
+PS C:\Users\Admin> docker inspect thirsty_raman
+find 
+"IPAddress": "172.17.0.2"
+
+
+
+docker run -it mysql /bin/bash
+bash-5.1# mysql -h 172.17.0.2 -u root -p pass
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.02 sec)
+
+mysql> create database mydb;
+Query OK, 1 row affected (0.02 sec)
+
+mysql>
+
+
+PS C:\Users\Admin> docker pull dbeaver/cloudbeaver
+
+PS C:\Users\Admin> docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                 NAMES
+b662acb7d8aa   mysql     "docker-entrypoint.s…"   16 minutes ago   Up 16 minutes   3306/tcp, 33060/tcp   heuristic_golick
+0a20b4b71820   mysql     "docker-entrypoint.s…"   18 minutes ago   Up 18 minutes   3306/tcp, 33060/tcp   thirsty_raman
+PS C:\Users\Admin> docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                 NAMES
+b662acb7d8aa   mysql     "docker-entrypoint.s…"   16 minutes ago   Up 16 minutes   3306/tcp, 33060/tcp   heuristic_golick
+0a20b4b71820   mysql     "docker-entrypoint.s…"   18 minutes ago   Up 18 minutes   3306/tcp, 33060/tcp   thirsty_raman
+
+
+ docker image ls
+
+
+
+docker run --name cloudbeaver --rm -ti -p 8080:8978 -v /opt/cloudbeaver/workspace dbeaver/cloudbeaver:latest -d --restart unless-stopped
+
+
+
+jdbc:mysql://172.17.0.2:3306/mydb
+root pass
+
+http://localhost:8080/#/
+cbadmin
+
+
